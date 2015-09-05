@@ -24,9 +24,9 @@ class AccountClient {
 
 extension AccountClient {
     
-    func getaccountlist(view: UITableView){
+    func getaccountlist(accesstoken: String, view: UITableView){
         let session = NSURLSession.sharedSession()
-        let urlString = "https://tartan.plaid.com/connect?client_id=55ea43693b5cadf40371c50c&secret=095aa0bfc4ae585fb74b61ef6bc78c&access_token=test_chase"
+        let urlString = "https://tartan.plaid.com/connect?client_id=55ea43693b5cadf40371c50c&secret=095aa0bfc4ae585fb74b61ef6bc78c&access_token=\(accesstoken)"
         
         let url = NSURL(string: urlString)!
         let request = NSURLRequest(URL: url)
@@ -67,54 +67,55 @@ extension AccountClient {
         task.resume()
     }
     
-    /*let request = NSMutableURLRequest(URL: NSURL(string: "https://tartan.plaid.com/connect?client_id=55ea43693b5cadf40371c50c&secret=095aa0bfc4ae585fb74b61ef6bc78c&type=wells&username=plaid_test&password=plaid_good&pin=1234")!)
-    request.HTTPMethod = "POST"
-    
-    
-    let session = NSURLSession.sharedSession()
-    let task = session.dataTaskWithRequest(request) { data, response, error in
-    if error != nil { // Handle error...
-    println("Connection error")
-    return
-    } else {
-    var parsingError: NSError? = nil
-    let parsedResult = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &parsingError) as! NSDictionary
-    
-    if let error = parsingError {
-    println("Post error")
-    }else{
-    println(parsedResult)
-    if let accesstoken = parsedResult["access_token"] as? String{
-    self.mfalogin(accesstoken)
+    func userlogin (username: String, password: String, type: String, completionHandler: (success: Bool, String: String?) -> Void){
+        let request = NSMutableURLRequest(URL: NSURL(string: "https://tartan.plaid.com/connect?client_id=55ea43693b5cadf40371c50c&secret=095aa0bfc4ae585fb74b61ef6bc78c&type=\(type)&username=\(username)&password=\(password)")!)
+        request.HTTPMethod = "POST"
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithRequest(request) { data, response, error in
+        if error != nil { // Handle error...
+            completionHandler(success: false, String: "Connection Failed")
+            return
+        } else {
+            var parsingError: NSError? = nil
+            let parsedResult = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &parsingError) as! NSDictionary
+        
+            if let error = parsingError {
+                completionHandler(success: false, String: "Post error")
+            }else{
+                println(parsedResult)
+                if let accesstoken = parsedResult["access_token"] as? String{
+                    completionHandler(success: true, String: accesstoken)
+                }else{
+                    completionHandler(success: false, String: "Login error")
+                }
+                }
+            }
+        }
+        task.resume()
     }
-    }
+    
+    func mfalogin(accesstoken: String, mfatext1: String, completionHandler: (success: Bool, String: String?)->Void){
+        let request = NSMutableURLRequest(URL: NSURL(string:"https://tartan.plaid.com/auth/step?client_id=55ea43693b5cadf40371c50c&secret=095aa0bfc4ae585fb74b61ef6bc78c&mfa=\(mfatext1)&access_token=\(accesstoken)")!)
+        request.HTTPMethod = "POST"
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithRequest(request) { data, response, error in
+            if error != nil { // Handle error...
+                completionHandler(success: false, String: "Connection error")
+                return
+            } else {
+                var parsingError: NSError? = nil
+                let parsedResult = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &parsingError) as! NSDictionary
+                
+                if let error = parsingError {
+                    completionHandler(success: false, String: "Post error")
+                }else{
+                    completionHandler(success: true, String: nil)
+                    
+                }
+            }
+        }
+        task.resume()
     }
     
-    }
-    task.resume()
-    */
 }
 
-/*func mfalogin(accesstoken: String){
-let request = NSMutableURLRequest(URL: NSURL(string:"https://tartan.plaid.com/auth/step?client_id=55ea43693b5cadf40371c50c&secret=095aa0bfc4ae585fb74b61ef6bc78c&mfa=1234&access_token=\(accesstoken)")!)
-request.HTTPMethod = "POST"
-let session = NSURLSession.sharedSession()
-let task = session.dataTaskWithRequest(request) { data, response, error in
-if error != nil { // Handle error...
-println("Connection error")
-return
-} else {
-var parsingError: NSError? = nil
-let parsedResult = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &parsingError) as! NSDictionary
-
-if let error = parsingError {
-println("Post error")
-}else{
-println(parsedResult)
-
-}
-}
-}
-task.resume()
-
-}*/

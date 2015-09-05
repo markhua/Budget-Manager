@@ -12,11 +12,13 @@ import Foundation
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableview: UITableView!
+    var accesstoken: String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.automaticallyAdjustsScrollViewInsets = false
         // Do any additional setup after loading the view, typically from a nib.
-        AccountClient.sharedInstance().getaccountlist(self.tableview)
+        AccountClient.sharedInstance().getaccountlist(accesstoken, view: self.tableview)
         println(AccountClient.sharedInstance().accounts.count)
         
     }

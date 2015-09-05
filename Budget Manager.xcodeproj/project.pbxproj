@@ -18,6 +18,8 @@
 		BCC174461B9AC1560061F2CA /* TransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC174451B9AC1560061F2CA /* TransactionViewController.swift */; };
 		BCC174481B9AC1BA0061F2CA /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC174471B9AC1BA0061F2CA /* Transaction.swift */; };
 		BCC1744A1B9AC4990061F2CA /* TransactionClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC174491B9AC4990061F2CA /* TransactionClient.swift */; };
+		BCC1744C1B9B182D0061F2CA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC1744B1B9B182D0061F2CA /* LoginViewController.swift */; };
+		BCC1745A1B9B2A9A0061F2CA /* MfaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC174591B9B2A9A0061F2CA /* MfaViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +48,8 @@
 		BCC174451B9AC1560061F2CA /* TransactionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionViewController.swift; sourceTree = "<group>"; };
 		BCC174471B9AC1BA0061F2CA /* Transaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		BCC174491B9AC4990061F2CA /* TransactionClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionClient.swift; sourceTree = "<group>"; };
+		BCC1744B1B9B182D0061F2CA /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		BCC174591B9B2A9A0061F2CA /* MfaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MfaViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +91,7 @@
 		BCC1741E1B9A86020061F2CA /* Budget Manager */ = {
 			isa = PBXGroup;
 			children = (
+				BCC174591B9B2A9A0061F2CA /* MfaViewController.swift */,
 				BCC174211B9A86020061F2CA /* AppDelegate.swift */,
 				BCC174231B9A86020061F2CA /* ViewController.swift */,
 				BCC174411B9AA7BF0061F2CA /* Account.swift */,
@@ -94,6 +99,7 @@
 				BCC174471B9AC1BA0061F2CA /* Transaction.swift */,
 				BCC174491B9AC4990061F2CA /* TransactionClient.swift */,
 				BCC174251B9A86020061F2CA /* Main.storyboard */,
+				BCC1744B1B9B182D0061F2CA /* LoginViewController.swift */,
 				BCC174451B9AC1560061F2CA /* TransactionViewController.swift */,
 				BCC174281B9A86020061F2CA /* Images.xcassets */,
 				BCC1742A1B9A86020061F2CA /* LaunchScreen.xib */,
@@ -230,7 +236,9 @@
 				BCC174461B9AC1560061F2CA /* TransactionViewController.swift in Sources */,
 				BCC174241B9A86020061F2CA /* ViewController.swift in Sources */,
 				BCC174481B9AC1BA0061F2CA /* Transaction.swift in Sources */,
+				BCC1745A1B9B2A9A0061F2CA /* MfaViewController.swift in Sources */,
 				BCC174221B9A86020061F2CA /* AppDelegate.swift in Sources */,
+				BCC1744C1B9B182D0061F2CA /* LoginViewController.swift in Sources */,
 				BCC174441B9AADDE0061F2CA /* AccountClient.swift in Sources */,
 				BCC1744A1B9AC4990061F2CA /* TransactionClient.swift in Sources */,
 				BCC174421B9AA7BF0061F2CA /* Account.swift in Sources */,
