@@ -11,6 +11,8 @@ import UIKit
 
 class AccountClient {
     var accounts = [Account]()
+    var totalincome: Double = 0
+    var totalexpense: Double = 0
     
     class func sharedInstance() -> AccountClient {
         
@@ -135,6 +137,41 @@ extension AccountClient {
                         }
                     }
 
+                }
+            }
+        }
+        task.resume()
+    }
+    
+    func getalltransactions(year: String, accesstoken: String){
+        
+        let session = NSURLSession.sharedSession()
+        let urlString = "https://tartan.plaid.com/connect?client_id=55ea43693b5cadf40371c50c&secret=095aa0bfc4ae585fb74b61ef6bc78c&access_token=\(accesstoken)"
+        
+        let url = NSURL(string: urlString)!
+        let request = NSURLRequest(URL: url)
+        
+        let task = session.dataTaskWithRequest(request) {data, response, downloadError in
+            if let error = downloadError {
+                println("Could not complete the request \(error)")
+            } else {
+                var parsingError: NSError? = nil
+                let parsedResult = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &parsingError) as! NSDictionary
+                if let response = parsedResult.valueForKey("transactions") as? [[String: AnyObject]]{
+                    for transaction in response {
+                        let amount = transaction["amount"] as! Double
+                        let date = transaction["date"] as! String
+                        if date.hasPrefix(year) {
+                            if amount >= 0 {
+                                self.totalexpense += amount
+                            } else {
+                                self.totalincome -= amount
+                            }
+                        }
+                    }
+                    
+                }else{
+                    println("error")
                 }
             }
         }

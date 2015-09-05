@@ -14,13 +14,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var tableview: UITableView!
     var accesstoken: String!
     
+    @IBOutlet weak var income: UILabel!
+    @IBOutlet weak var Expense: UILabel!
+    @IBOutlet weak var Saving: UILabel!
+    
     override func viewDidLoad() {
         AccountClient.sharedInstance().accounts.removeAll(keepCapacity: true)
         super.viewDidLoad()
         self.automaticallyAdjustsScrollViewInsets = false
         // Do any additional setup after loading the view, typically from a nib.
         AccountClient.sharedInstance().getaccountlist(accesstoken, view: self.tableview)
-        println(AccountClient.sharedInstance().accounts.count)
+        AccountClient.sharedInstance().getalltransactions("2014", accesstoken: self.accesstoken)
         
     }
     
@@ -35,6 +39,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         dispatch_async(dispatch_get_main_queue()){
             cell.textLabel?.text = account.name!
             cell.detailTextLabel?.text = "Card Type: \(account.type!), Number: xxxxx \(account.number!), \nCurrent Balance: \(account.balance!)"
+            self.income.text = "Total Income: \(AccountClient.sharedInstance().totalincome)"
+            self.Expense.text = "Total Expense: \(AccountClient.sharedInstance().totalexpense)"
+            self.Saving.text = "You've saved \(AccountClient.sharedInstance().totalincome-AccountClient.sharedInstance().totalexpense) in 2014"
         }
         return cell
     }
