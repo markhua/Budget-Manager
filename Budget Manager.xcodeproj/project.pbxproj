@@ -20,6 +20,8 @@
 		BCC1744A1B9AC4990061F2CA /* TransactionClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC174491B9AC4990061F2CA /* TransactionClient.swift */; };
 		BCC1744C1B9B182D0061F2CA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC1744B1B9B182D0061F2CA /* LoginViewController.swift */; };
 		BCC1745A1B9B2A9A0061F2CA /* MfaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC174591B9B2A9A0061F2CA /* MfaViewController.swift */; };
+		BCDF9DBF1B9B89790060BE26 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDF9DBE1B9B89450060BE26 /* Charts.framework */; };
+		BCDF9DC11B9B8A640060BE26 /* BarChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDF9DC01B9B8A640060BE26 /* BarChartViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +31,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = BCC1741B1B9A86020061F2CA;
 			remoteInfo = "Budget Manager";
+		};
+		BCDF9DBD1B9B89450060BE26 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BCDF9DB91B9B89450060BE26 /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5BA8EC401A9D14DC00CE82E1;
+			remoteInfo = Charts;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -50,6 +59,8 @@
 		BCC174491B9AC4990061F2CA /* TransactionClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionClient.swift; sourceTree = "<group>"; };
 		BCC1744B1B9B182D0061F2CA /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		BCC174591B9B2A9A0061F2CA /* MfaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MfaViewController.swift; sourceTree = "<group>"; };
+		BCDF9DB91B9B89450060BE26 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = Charts/Charts.xcodeproj; sourceTree = "<group>"; };
+		BCDF9DC01B9B8A640060BE26 /* BarChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarChartViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCDF9DBF1B9B89790060BE26 /* Charts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				BCC1741E1B9A86020061F2CA /* Budget Manager */,
+				BCDF9DB91B9B89450060BE26 /* Charts.xcodeproj */,
 				BCC174341B9A86020061F2CA /* Budget ManagerTests */,
 				BCC1741D1B9A86020061F2CA /* Products */,
 			);
@@ -99,6 +112,7 @@
 				BCC174471B9AC1BA0061F2CA /* Transaction.swift */,
 				BCC174491B9AC4990061F2CA /* TransactionClient.swift */,
 				BCC174251B9A86020061F2CA /* Main.storyboard */,
+				BCDF9DC01B9B8A640060BE26 /* BarChartViewController.swift */,
 				BCC1744B1B9B182D0061F2CA /* LoginViewController.swift */,
 				BCC174451B9AC1560061F2CA /* TransactionViewController.swift */,
 				BCC174281B9A86020061F2CA /* Images.xcassets */,
@@ -131,6 +145,14 @@
 				BCC174361B9A86020061F2CA /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BCDF9DBA1B9B89450060BE26 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BCDF9DBE1B9B89450060BE26 /* Charts.framework */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,6 +222,12 @@
 			mainGroup = BCC174131B9A86020061F2CA;
 			productRefGroup = BCC1741D1B9A86020061F2CA /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = BCDF9DBA1B9B89450060BE26 /* Products */;
+					ProjectRef = BCDF9DB91B9B89450060BE26 /* Charts.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				BCC1741B1B9A86020061F2CA /* Budget Manager */,
@@ -207,6 +235,16 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		BCDF9DBE1B9B89450060BE26 /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = BCDF9DBD1B9B89450060BE26 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		BCC1741A1B9A86020061F2CA /* Resources */ = {
@@ -242,6 +280,7 @@
 				BCC174441B9AADDE0061F2CA /* AccountClient.swift in Sources */,
 				BCC1744A1B9AC4990061F2CA /* TransactionClient.swift in Sources */,
 				BCC174421B9AA7BF0061F2CA /* Account.swift in Sources */,
+				BCDF9DC11B9B8A640060BE26 /* BarChartViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

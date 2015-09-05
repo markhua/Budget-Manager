@@ -135,6 +135,57 @@
             </objects>
             <point key="canvasLocation" x="-169" y="164"/>
         </scene>
+        <!--Bar Chart View Controller-->
+        <scene sceneID="7IX-4Y-RKi">
+            <objects>
+                <viewController storyboardIdentifier="BarChartViewController" id="AO4-Ck-Uz7" customClass="BarChartViewController" customModule="Budget_Manager" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="n9z-Pm-sMg"/>
+                        <viewControllerLayoutGuide type="bottom" id="HpK-td-BKi"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="USC-Es-bzp">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ed8-Gs-Wpd" customClass="BarChartView" customModule="Charts">
+                                <rect key="frame" x="16" y="30" width="568" height="300"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="8cV-Nf-K8U"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ghy-ra-zPs" customClass="PieChartView" customModule="Charts">
+                                <rect key="frame" x="16" y="340" width="568" height="260"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ed8-Gs-Wpd" firstAttribute="top" secondItem="USC-Es-bzp" secondAttribute="topMargin" constant="30" id="2hZ-jb-gjr"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ghy-ra-zPs" secondAttribute="trailing" id="Gfo-3V-ots"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="ghy-ra-zPs" secondAttribute="bottom" id="PRK-BZ-Sdp"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ed8-Gs-Wpd" secondAttribute="trailing" id="bIu-12-xIX"/>
+                            <constraint firstItem="ghy-ra-zPs" firstAttribute="leading" secondItem="USC-Es-bzp" secondAttribute="leadingMargin" id="gcc-Zg-wz7"/>
+                            <constraint firstItem="ghy-ra-zPs" firstAttribute="top" secondItem="ed8-Gs-Wpd" secondAttribute="bottom" constant="10" id="qIQ-r3-6Kx"/>
+                            <constraint firstItem="ed8-Gs-Wpd" firstAttribute="leading" secondItem="USC-Es-bzp" secondAttribute="leadingMargin" id="vcs-xS-koW"/>
+                            <constraint firstItem="HpK-td-BKi" firstAttribute="top" secondItem="ed8-Gs-Wpd" secondAttribute="bottom" id="yim-pC-hGz"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="yim-pC-hGz"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <connections>
+                        <outlet property="barChartView" destination="ed8-Gs-Wpd" id="Q1f-p6-zru"/>
+                        <outlet property="pieChartView" destination="ghy-ra-zPs" id="gxC-zq-hJ7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rcr-nH-nRE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1145" y="891"/>
+        </scene>
         <!--Mfa View Controller-->
         <scene sceneID="vNk-kC-Mhk">
             <objects>

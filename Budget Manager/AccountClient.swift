@@ -13,6 +13,8 @@ class AccountClient {
     var accounts = [Account]()
     var totalincome: Double = 0
     var totalexpense: Double = 0
+    var monthlyexpense: [Double] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    var expensebycat: [Double] = [0, 0, 0, 0]
     
     class func sharedInstance() -> AccountClient {
         
@@ -164,18 +166,50 @@ extension AccountClient {
                         if date.hasPrefix(year) {
                             if amount >= 0 {
                                 self.totalexpense += amount
+                                let index = advance(date.startIndex, 5)
+                                let month = "\(date[index])\(date[index.successor()])"
+                                if let i = month.toInt() {
+                                    self.monthlyexpense[i-1] += amount
+                                }
+                                
+                                if let categories = transaction["category"] as? [String] {
+                                    var added = false
+                                    outer: for category in categories {
+                                        switch category {
+                                        case "Food and Drink":
+                                            self.expensebycat[0] += amount
+                                            added = true
+                                            break outer
+                                        case "Shops":
+                                            self.expensebycat[1] += amount
+                                            added = true
+                                            break outer
+                                        case "Transfer":
+                                            self.expensebycat[2] += amount
+                                            added = true
+                                            break outer
+                                        default:
+                                            break
+                                        }
+                                    }
+                                    if added == false { self.expensebycat[3] += amount}
+                                    
+                                }
+                                
                             } else {
                                 self.totalincome -= amount
                             }
+
                         }
-                    }
                     
-                }else{
-                    println("error")
                 }
             }
+
+        }
+    
         }
         task.resume()
+        
     }
     
 }
