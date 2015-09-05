@@ -15,6 +15,9 @@
 		BCC174381B9A86020061F2CA /* Budget_ManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC174371B9A86020061F2CA /* Budget_ManagerTests.swift */; };
 		BCC174421B9AA7BF0061F2CA /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC174411B9AA7BF0061F2CA /* Account.swift */; };
 		BCC174441B9AADDE0061F2CA /* AccountClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC174431B9AADDE0061F2CA /* AccountClient.swift */; };
+		BCC174461B9AC1560061F2CA /* TransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC174451B9AC1560061F2CA /* TransactionViewController.swift */; };
+		BCC174481B9AC1BA0061F2CA /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC174471B9AC1BA0061F2CA /* Transaction.swift */; };
+		BCC1744A1B9AC4990061F2CA /* TransactionClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC174491B9AC4990061F2CA /* TransactionClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +43,9 @@
 		BCC174371B9A86020061F2CA /* Budget_ManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Budget_ManagerTests.swift; sourceTree = "<group>"; };
 		BCC174411B9AA7BF0061F2CA /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		BCC174431B9AADDE0061F2CA /* AccountClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountClient.swift; sourceTree = "<group>"; };
+		BCC174451B9AC1560061F2CA /* TransactionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionViewController.swift; sourceTree = "<group>"; };
+		BCC174471B9AC1BA0061F2CA /* Transaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
+		BCC174491B9AC4990061F2CA /* TransactionClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,7 +91,10 @@
 				BCC174231B9A86020061F2CA /* ViewController.swift */,
 				BCC174411B9AA7BF0061F2CA /* Account.swift */,
 				BCC174431B9AADDE0061F2CA /* AccountClient.swift */,
+				BCC174471B9AC1BA0061F2CA /* Transaction.swift */,
+				BCC174491B9AC4990061F2CA /* TransactionClient.swift */,
 				BCC174251B9A86020061F2CA /* Main.storyboard */,
+				BCC174451B9AC1560061F2CA /* TransactionViewController.swift */,
 				BCC174281B9A86020061F2CA /* Images.xcassets */,
 				BCC1742A1B9A86020061F2CA /* LaunchScreen.xib */,
 				BCC1741F1B9A86020061F2CA /* Supporting Files */,
@@ -218,9 +227,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCC174461B9AC1560061F2CA /* TransactionViewController.swift in Sources */,
 				BCC174241B9A86020061F2CA /* ViewController.swift in Sources */,
+				BCC174481B9AC1BA0061F2CA /* Transaction.swift in Sources */,
 				BCC174221B9A86020061F2CA /* AppDelegate.swift in Sources */,
 				BCC174441B9AADDE0061F2CA /* AccountClient.swift in Sources */,
+				BCC1744A1B9AC4990061F2CA /* TransactionClient.swift in Sources */,
 				BCC174421B9AA7BF0061F2CA /* Account.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

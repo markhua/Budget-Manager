@@ -15,7 +15,6 @@ class Account: NSObject{
     var name: String?
     var type: String?
     var number: String?
-    //var transactions : [Transaction] = [Transaction]()
     
     override init(){
         accountID = ""

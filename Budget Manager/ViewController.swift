@@ -15,7 +15,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        tableview.delegate = self
         AccountClient.sharedInstance().getaccountlist(self.tableview)
         println(AccountClient.sharedInstance().accounts.count)
         
@@ -37,19 +36,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        println(AccountClient.sharedInstance().accounts.count)
         return AccountClient.sharedInstance().accounts.count
     }
     
     // Navigate to the detail view controller to make the plan after selecting the venue
-    /*func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        TransactionClient.sharedInstance().transactions.removeAll(keepCapacity: true)
+        let detailController = self.storyboard!.instantiateViewControllerWithIdentifier("TransactionViewController")! as! TransactionViewController
         
-        let detailController = self.storyboard!.instantiateViewControllerWithIdentifier("PlanDetailViewController")! as! PlanDetailViewController
-        
-        detailController.selectedVenueIndex = indexPath.row
+        detailController.accountid = AccountClient.sharedInstance().accounts[indexPath.row].accountID!
         self.navigationController!.pushViewController(detailController, animated: true)
         
-    }*/
+    }
 
 
 }
