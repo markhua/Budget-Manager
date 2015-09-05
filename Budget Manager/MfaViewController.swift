@@ -16,12 +16,14 @@ class MfaViewController: UIViewController {
     
     @IBOutlet weak var toplabel: UILabel!
     @IBOutlet weak var bottomlabel: UILabel!
+    @IBOutlet weak var titlelabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
         dispatch_async(dispatch_get_main_queue()){
+            self.titlelabel.text = "MFA security check:"
             self.toplabel.text = self.question
             self.bottomlabel.text = ""
             println(self.question)
