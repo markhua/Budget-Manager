@@ -13,7 +13,8 @@ class LoginViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var textpicker: UIPickerView!
-    var pickerDataSource = ["Amex", "Chase"]
+    var pickerDataSource = ["Amex", "Chase", "Bank of America", "Citi"]
+    var banktype = ["amex", "chase", "bofa", "citi"]
     var bank = "amex"
     
     override func viewDidLoad() {
@@ -23,15 +24,26 @@ class LoginViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     }
 
     @IBAction func login(sender: UIButton) {
-        AccountClient.sharedInstance().userlogin(username.text, password: password.text, type: bank) { success, string in
+        AccountClient.sharedInstance().userlogin(username.text, password: password.text, type: bank) { success, token, message in
             if (success) {
-                println(string)
-                let detailController = self.storyboard!.instantiateViewControllerWithIdentifier("MFAViewController") as! MfaViewController
-                detailController.accesstoken = string!
-                dispatch_async(dispatch_get_main_queue()){
-                    self.navigationController!.pushViewController(detailController, animated: true)
+                println(token)
+                if message == nil{
+                    let detailController = self.storyboard!.instantiateViewControllerWithIdentifier("AccountViewController") as! ViewController
+                    detailController.accesstoken = token!
+                    dispatch_async(dispatch_get_main_queue()){
+                        self.navigationController!.pushViewController(detailController, animated: true)
+                    }
+                }else{
+                    let detailController = self.storyboard!.instantiateViewControllerWithIdentifier("MFAViewController") as! MfaViewController
+                    detailController.accesstoken = token!
+                    detailController.question = message
+                    dispatch_async(dispatch_get_main_queue()){
+                        self.navigationController!.pushViewController(detailController, animated: true)
+                    }
+                    
                 }
             }
+            
         }
     }
     
@@ -55,14 +67,7 @@ class LoginViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
     {
-        if(row == 0)
-        {
-            bank = "amex"
-        }
-        else if(row == 1)
-        {
-            bank = "chase"
-        }
+        bank = banktype[row]
     }
 
 }

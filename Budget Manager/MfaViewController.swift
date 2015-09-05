@@ -12,23 +12,42 @@ class MfaViewController: UIViewController {
     
     @IBOutlet weak var mfatext1: UITextField!
     var accesstoken: String!
+    var question: String!
+    
+    @IBOutlet weak var toplabel: UILabel!
+    @IBOutlet weak var bottomlabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        dispatch_async(dispatch_get_main_queue()){
+            self.toplabel.text = self.question
+            self.bottomlabel.text = ""
+            println(self.question)
+        }
     }
     
     @IBAction func loginMFA(sender: UIButton) {
         AccountClient.sharedInstance().mfalogin(accesstoken, mfatext1: mfatext1.text) {
-            success, string in
+            success, mfa, string in
             if (success){
                 let detailController = self.storyboard!.instantiateViewControllerWithIdentifier("AccountViewController") as! ViewController
                 detailController.accesstoken = self.accesstoken
                 dispatch_async(dispatch_get_main_queue()){
+                    self.bottomlabel.text = ""
                     self.navigationController!.pushViewController(detailController, animated: true)
                 }
-
+            } else if (mfa){
+                println(string)
+                dispatch_async(dispatch_get_main_queue()){
+                    self.toplabel.text = string
+                    self.bottomlabel.text = ""
+                }
+            } else {
+                dispatch_async(dispatch_get_main_queue()){
+                    self.bottomlabel.text = string
+                }
             }
         }
     }

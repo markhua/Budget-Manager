@@ -15,6 +15,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var accesstoken: String!
     
     override func viewDidLoad() {
+        AccountClient.sharedInstance().accounts.removeAll(keepCapacity: true)
         super.viewDidLoad()
         self.automaticallyAdjustsScrollViewInsets = false
         // Do any additional setup after loading the view, typically from a nib.

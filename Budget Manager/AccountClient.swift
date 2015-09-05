@@ -67,26 +67,37 @@ extension AccountClient {
         task.resume()
     }
     
-    func userlogin (username: String, password: String, type: String, completionHandler: (success: Bool, String: String?) -> Void){
-        let request = NSMutableURLRequest(URL: NSURL(string: "https://tartan.plaid.com/connect?client_id=55ea43693b5cadf40371c50c&secret=095aa0bfc4ae585fb74b61ef6bc78c&type=\(type)&username=\(username)&password=\(password)")!)
+    func userlogin (username: String, password: String, type: String, completionHandler: (success: Bool, String: String?, question: String?) -> Void){
+        let request = NSMutableURLRequest(URL: NSURL(string: "https://tartan.plaid.com/connect?client_id=55ea43693b5cadf40371c50c&secret=095aa0bfc4ae585fb74b61ef6bc78c&type=\(type)&username=plaid_test&password=plaid_good")!)
         request.HTTPMethod = "POST"
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithRequest(request) { data, response, error in
         if error != nil { // Handle error...
-            completionHandler(success: false, String: "Connection Failed")
-            return
+            completionHandler(success: false, String: "Connection Failed", question: nil)
         } else {
             var parsingError: NSError? = nil
             let parsedResult = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &parsingError) as! NSDictionary
         
             if let error = parsingError {
-                completionHandler(success: false, String: "Post error")
+                completionHandler(success: false, String: "Post error", question: nil)
             }else{
                 println(parsedResult)
                 if let accesstoken = parsedResult["access_token"] as? String{
-                    completionHandler(success: true, String: accesstoken)
+                    if let mfa = parsedResult["mfa"] as? [[String: AnyObject]]{
+                        if let mfamessage = mfa[0]["question"] as? String {
+                            completionHandler(success: true, String: accesstoken, question: mfamessage)
+                        }
+                    }
+                    if let mfa = parsedResult["mfa"] as? [String: AnyObject]{
+                        if let mfamessage = mfa["message"] as? String {
+                            completionHandler(success: true, String: accesstoken, question: mfamessage)
+                        }
+                    }
+                    if let accounts = parsedResult["accounts"] as? [[String: AnyObject]] {
+                        completionHandler(success: true, String: accesstoken, question: nil)
+                    }
                 }else{
-                    completionHandler(success: false, String: "Login error")
+                    completionHandler(success: false, String: "Login error", question: nil)
                 }
                 }
             }
@@ -94,23 +105,36 @@ extension AccountClient {
         task.resume()
     }
     
-    func mfalogin(accesstoken: String, mfatext1: String, completionHandler: (success: Bool, String: String?)->Void){
+    func mfalogin(accesstoken: String, mfatext1: String, completionHandler: (success: Bool, mfa: Bool, String: String?)->Void){
         let request = NSMutableURLRequest(URL: NSURL(string:"https://tartan.plaid.com/auth/step?client_id=55ea43693b5cadf40371c50c&secret=095aa0bfc4ae585fb74b61ef6bc78c&mfa=\(mfatext1)&access_token=\(accesstoken)")!)
         request.HTTPMethod = "POST"
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithRequest(request) { data, response, error in
             if error != nil { // Handle error...
-                completionHandler(success: false, String: "Connection error")
+                completionHandler(success: false, mfa: false, String: "Connection error")
                 return
             } else {
                 var parsingError: NSError? = nil
                 let parsedResult = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &parsingError) as! NSDictionary
                 
                 if let error = parsingError {
-                    completionHandler(success: false, String: "Post error")
+                    completionHandler(success: false, mfa: false, String: "Post error")
                 }else{
-                    completionHandler(success: true, String: nil)
-                    
+ 
+                    if let message = parsedResult["message"] as? String{
+                        println(message)
+                        completionHandler(success: false, mfa: false, String: message)
+                    }else{
+                        if let mfa = parsedResult["mfa"] as? [[String: AnyObject]]{
+                            if let mfamessage = mfa[0]["question"] as? String {
+                                completionHandler(success: false, mfa: true, String: mfamessage)
+                            }
+                        }
+                        else{
+                            completionHandler(success: true, mfa: false, String: nil)
+                        }
+                    }
+
                 }
             }
         }
