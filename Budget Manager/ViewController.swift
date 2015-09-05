@@ -14,6 +14,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var tableview: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.automaticallyAdjustsScrollViewInsets = false
         // Do any additional setup after loading the view, typically from a nib.
         AccountClient.sharedInstance().getaccountlist(self.tableview)
         println(AccountClient.sharedInstance().accounts.count)
@@ -43,8 +44,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         TransactionClient.sharedInstance().transactions.removeAll(keepCapacity: true)
         let detailController = self.storyboard!.instantiateViewControllerWithIdentifier("TransactionViewController")! as! TransactionViewController
+        detailController.selectedacct = AccountClient.sharedInstance().accounts[indexPath.row]
         
-        detailController.accountid = AccountClient.sharedInstance().accounts[indexPath.row].accountID!
         self.navigationController!.pushViewController(detailController, animated: true)
         
     }

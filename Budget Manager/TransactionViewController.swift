@@ -10,13 +10,21 @@ import UIKit
 
 class TransactionViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    var accountid = ""
-    @IBOutlet weak var tableview: UITableView!
+    var selectedacct: Account!
     
+    @IBOutlet weak var tableview: UITableView!
+    @IBOutlet weak var account: UILabel!
+    @IBOutlet weak var balance: UILabel!
+    
+    override func viewWillAppear(animated: Bool) {
+        account.text = "\(selectedacct.name!)"
+        balance.text = "\(selectedacct.balance!)"
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.automaticallyAdjustsScrollViewInsets = false
         // Do any additional setup after loading the view.
-        TransactionClient.sharedInstance().gettransactionlist(self.accountid, view: self.tableview)
+        TransactionClient.sharedInstance().gettransactionlist(self.selectedacct.accountID!, view: self.tableview)
         self.tableview.reloadData()
     }
 
@@ -31,8 +39,12 @@ class TransactionViewController: UIViewController, UITableViewDelegate, UITableV
         let transaction = TransactionClient.sharedInstance().transactions[indexPath.row]
         
         dispatch_async(dispatch_get_main_queue()){
-            cell.textLabel?.text = transaction.name
-            cell.detailTextLabel?.text = "Card Type: \(transaction.category), Number: xxxxx \(transaction.amount), \nCurrent Balance: \(transaction.date)"
+            if transaction.amount >= 0 {
+                cell.textLabel?.text = "-\(transaction.amount)"
+            }else{
+                cell.textLabel?.text = "+\(-transaction.amount)"
+            }
+            cell.detailTextLabel?.text = "\(transaction.name) \nCard Type: \(transaction.category),\nDate: \(transaction.date)"
         }
         return cell
     }
