@@ -44,7 +44,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U41-cd-XM9">
-                                <rect key="frame" x="66" y="233" width="534" height="162"/>
+                                <rect key="frame" x="146" y="263" width="454" height="162"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="FS9-86-L2n"/>
                                     <constraint firstAttribute="height" constant="80" id="QpI-cf-Vf2"/>
@@ -58,7 +58,7 @@
                                 </variation>
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0eV-Y5-IoU">
-                                <rect key="frame" x="36" y="394" width="528" height="27"/>
+                                <rect key="frame" x="36" y="434" width="528" height="27"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="15"/>
                                 <state key="normal" title="Submit">
@@ -81,7 +81,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Institution" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vKJ-VB-gZ9">
-                                <rect key="frame" x="42" y="292" width="114" height="15"/>
+                                <rect key="frame" x="42" y="278" width="194" height="15"/>
                                 <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="15"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -91,8 +91,8 @@
                         <constraints>
                             <constraint firstItem="0eV-Y5-IoU" firstAttribute="leading" secondItem="tki-Ym-ZzY" secondAttribute="leadingMargin" constant="20" id="1GA-HD-X3M"/>
                             <constraint firstItem="XfJ-bT-lrd" firstAttribute="top" secondItem="TdF-P7-BG9" secondAttribute="bottom" constant="106" id="44h-eq-Yu5"/>
-                            <constraint firstItem="U41-cd-XM9" firstAttribute="top" secondItem="wTT-0Q-ZJ6" secondAttribute="bottom" constant="40" id="4Nu-oT-Zn5"/>
-                            <constraint firstItem="0eV-Y5-IoU" firstAttribute="top" secondItem="U41-cd-XM9" secondAttribute="bottom" constant="50" id="BH0-7D-HJy"/>
+                            <constraint firstItem="U41-cd-XM9" firstAttribute="top" secondItem="wTT-0Q-ZJ6" secondAttribute="bottom" constant="70" id="4Nu-oT-Zn5"/>
+                            <constraint firstItem="0eV-Y5-IoU" firstAttribute="top" secondItem="U41-cd-XM9" secondAttribute="bottom" constant="60" id="BH0-7D-HJy"/>
                             <constraint firstAttribute="centerX" secondItem="FHi-sx-yme" secondAttribute="centerX" id="Cjw-MQ-NXi"/>
                             <constraint firstItem="vKJ-VB-gZ9" firstAttribute="leading" secondItem="tki-Ym-ZzY" secondAttribute="leadingMargin" constant="26" id="Cxd-xE-2ZU"/>
                             <constraint firstAttribute="centerX" secondItem="0eV-Y5-IoU" secondAttribute="centerX" id="Jay-mK-JgD"/>
@@ -103,11 +103,11 @@
                             <constraint firstAttribute="trailingMargin" secondItem="FHi-sx-yme" secondAttribute="trailing" constant="20" id="fph-hM-nFR"/>
                             <constraint firstItem="wTT-0Q-ZJ6" firstAttribute="top" secondItem="FHi-sx-yme" secondAttribute="bottom" constant="20" id="iw6-Kn-Vqv"/>
                             <constraint firstItem="FHi-sx-yme" firstAttribute="leading" secondItem="XfJ-bT-lrd" secondAttribute="trailing" constant="23" id="lVa-K4-97y"/>
-                            <constraint firstItem="U41-cd-XM9" firstAttribute="leading" secondItem="tki-Ym-ZzY" secondAttribute="leadingMargin" constant="50" id="nss-0V-s3B"/>
+                            <constraint firstItem="U41-cd-XM9" firstAttribute="leading" secondItem="tki-Ym-ZzY" secondAttribute="leadingMargin" constant="130" id="nss-0V-s3B"/>
                             <constraint firstAttribute="centerX" secondItem="wTT-0Q-ZJ6" secondAttribute="centerX" constant="-0.5" id="oqa-rQ-URq"/>
                             <constraint firstItem="FHi-sx-yme" firstAttribute="top" secondItem="TdF-P7-BG9" secondAttribute="bottom" constant="100" id="sdZ-2t-jAd"/>
                             <constraint firstItem="KPm-9h-msB" firstAttribute="leading" secondItem="tki-Ym-ZzY" secondAttribute="leadingMargin" constant="26" id="vda-Se-m5U"/>
-                            <constraint firstItem="vKJ-VB-gZ9" firstAttribute="top" secondItem="KPm-9h-msB" secondAttribute="bottom" constant="54" id="x0c-LN-WoE"/>
+                            <constraint firstItem="vKJ-VB-gZ9" firstAttribute="top" secondItem="KPm-9h-msB" secondAttribute="bottom" constant="40" id="x0c-LN-WoE"/>
                             <constraint firstAttribute="trailingMargin" secondItem="wTT-0Q-ZJ6" secondAttribute="trailing" constant="20" id="xMT-et-VMf"/>
                             <constraint firstItem="KPm-9h-msB" firstAttribute="top" secondItem="XfJ-bT-lrd" secondAttribute="bottom" constant="38" id="xT8-aD-9Br"/>
                             <constraint firstAttribute="trailingMargin" secondItem="U41-cd-XM9" secondAttribute="trailing" constant="-16" id="y2C-uO-EEf"/>
@@ -118,9 +118,9 @@
                             <mask key="constraints">
                                 <exclude reference="Cjw-MQ-NXi"/>
                                 <exclude reference="Y46-Id-l0U"/>
-                                <exclude reference="Q21-MQ-qO1"/>
                                 <exclude reference="oqa-rQ-URq"/>
                                 <exclude reference="yQ0-ut-fe0"/>
+                                <exclude reference="Q21-MQ-qO1"/>
                             </mask>
                         </variation>
                     </view>
@@ -149,17 +149,39 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ed8-Gs-Wpd" customClass="BarChartView" customModule="Charts">
                                 <rect key="frame" x="16" y="30" width="568" height="300"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Expenses per month, 2014" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bZT-Nr-MpD">
+                                        <rect key="frame" x="176" y="-20" width="217" height="15"/>
+                                        <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="15"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.94110902919999995" blue="0.8077903971" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="8cV-Nf-K8U"/>
+                                    <constraint firstAttribute="centerX" secondItem="bZT-Nr-MpD" secondAttribute="centerX" constant="-0.5" id="kKG-Fx-R5h"/>
+                                    <constraint firstItem="bZT-Nr-MpD" firstAttribute="top" secondItem="ed8-Gs-Wpd" secondAttribute="top" constant="-20" id="oaL-oi-S1t"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ghy-ra-zPs" customClass="PieChartView" customModule="Charts">
                                 <rect key="frame" x="16" y="340" width="568" height="260"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Expenses per category, 2014" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bcp-5E-RaR">
+                                        <rect key="frame" x="157" y="0.0" width="244" height="15"/>
+                                        <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="15"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.94110902919999995" blue="0.8077903971" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="centerX" secondItem="bcp-5E-RaR" secondAttribute="centerX" constant="5" id="R19-Yn-x2p"/>
+                                    <constraint firstItem="bcp-5E-RaR" firstAttribute="top" secondItem="ghy-ra-zPs" secondAttribute="top" id="Zcl-dX-fbs"/>
+                                </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="ed8-Gs-Wpd" firstAttribute="top" secondItem="USC-Es-bzp" secondAttribute="topMargin" constant="30" id="2hZ-jb-gjr"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ghy-ra-zPs" secondAttribute="trailing" id="Gfo-3V-ots"/>
@@ -184,7 +206,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rcr-nH-nRE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1145" y="891"/>
+            <point key="canvasLocation" x="1145" y="890"/>
         </scene>
         <!--Mfa View Controller-->
         <scene sceneID="vNk-kC-Mhk">
@@ -326,9 +348,9 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Saving" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r1H-Xf-tsV">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Saving" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r1H-Xf-tsV">
                                 <rect key="frame" x="37" y="81" width="55" height="15"/>
-                                <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="Courier-Bold" family="Courier" pointSize="15"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>

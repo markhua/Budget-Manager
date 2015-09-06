@@ -26,7 +26,6 @@ class MfaViewController: UIViewController {
             self.titlelabel.text = "MFA security check:"
             self.toplabel.text = self.question
             self.bottomlabel.text = ""
-            println(self.question)
         }
     }
     
@@ -41,7 +40,6 @@ class MfaViewController: UIViewController {
                     self.navigationController!.pushViewController(detailController, animated: true)
                 }
             } else if (mfa){
-                println(string)
                 dispatch_async(dispatch_get_main_queue()){
                     self.toplabel.text = string
                     self.bottomlabel.text = ""

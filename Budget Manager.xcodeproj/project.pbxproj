@@ -22,6 +22,8 @@
 		BCC1745A1B9B2A9A0061F2CA /* MfaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC174591B9B2A9A0061F2CA /* MfaViewController.swift */; };
 		BCDF9DBF1B9B89790060BE26 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDF9DBE1B9B89450060BE26 /* Charts.framework */; };
 		BCDF9DC11B9B8A640060BE26 /* BarChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDF9DC01B9B8A640060BE26 /* BarChartViewController.swift */; };
+		BCFC95511B9BCA180024EC88 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDF9DBE1B9B89450060BE26 /* Charts.framework */; };
+		BCFC95521B9BCA180024EC88 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BCDF9DBE1B9B89450060BE26 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +41,28 @@
 			remoteGlobalIDString = 5BA8EC401A9D14DC00CE82E1;
 			remoteInfo = Charts;
 		};
+		BCFC95531B9BCA180024EC88 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BCDF9DB91B9B89450060BE26 /* Charts.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 5BA8EC3F1A9D14DC00CE82E1;
+			remoteInfo = Charts;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BCFC95551B9BCA180024EC88 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BCFC95521B9BCA180024EC88 /* Charts.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		BCC1741C1B9A86020061F2CA /* Budget Manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Budget Manager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -69,6 +92,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCDF9DBF1B9B89790060BE26 /* Charts.framework in Frameworks */,
+				BCFC95511B9BCA180024EC88 /* Charts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -165,10 +189,12 @@
 				BCC174181B9A86020061F2CA /* Sources */,
 				BCC174191B9A86020061F2CA /* Frameworks */,
 				BCC1741A1B9A86020061F2CA /* Resources */,
+				BCFC95551B9BCA180024EC88 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				BCFC95541B9BCA180024EC88 /* PBXTargetDependency */,
 			);
 			name = "Budget Manager";
 			productName = "Budget Manager";
@@ -204,6 +230,7 @@
 				TargetAttributes = {
 					BCC1741B1B9A86020061F2CA = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = 7QTQ385QQN;
 					};
 					BCC174301B9A86020061F2CA = {
 						CreatedOnToolsVersion = 6.4;
@@ -299,6 +326,11 @@
 			isa = PBXTargetDependency;
 			target = BCC1741B1B9A86020061F2CA /* Budget Manager */;
 			targetProxy = BCC174321B9A86020061F2CA /* PBXContainerItemProxy */;
+		};
+		BCFC95541B9BCA180024EC88 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Charts;
+			targetProxy = BCFC95531B9BCA180024EC88 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -407,9 +439,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Budget Manager/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -417,9 +452,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Budget Manager/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

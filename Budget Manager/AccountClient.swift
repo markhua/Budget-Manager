@@ -145,7 +145,7 @@ extension AccountClient {
         task.resume()
     }
     
-    func getalltransactions(year: String, accesstoken: String){
+    func getalltransactions(year: String, accesstoken: String, label1: UILabel, label2: UILabel, label3: UILabel){
         
         let session = NSURLSession.sharedSession()
         let urlString = "https://tartan.plaid.com/connect?client_id=55ea43693b5cadf40371c50c&secret=095aa0bfc4ae585fb74b61ef6bc78c&access_token=\(accesstoken)"
@@ -177,11 +177,11 @@ extension AccountClient {
                                     outer: for category in categories {
                                         switch category {
                                         case "Food and Drink":
-                                            self.expensebycat[0] += amount
+                                            self.expensebycat[1] += amount
                                             added = true
                                             break outer
                                         case "Shops":
-                                            self.expensebycat[1] += amount
+                                            self.expensebycat[0] += amount
                                             added = true
                                             break outer
                                         case "Transfer":
@@ -203,6 +203,18 @@ extension AccountClient {
                         }
                     
                 }
+                    dispatch_async(dispatch_get_main_queue()){
+                        label1.text = "Total Income: \(self.totalincome)"
+                        label2.text = "Total Expense: \(self.totalexpense)"
+                        let saving = self.totalincome-self.totalexpense
+                        if saving >= 0 {
+                            label3.text = "You've saved \(saving) in 2014!"
+                            label3.textColor = UIColor.greenColor()
+                        } else {
+                            label3.text = "You exceeded your income by \(-saving)!"
+                            label3.textColor = UIColor.redColor()
+                        }
+                    }
             }
 
         }

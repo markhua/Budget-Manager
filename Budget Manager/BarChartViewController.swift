@@ -42,7 +42,7 @@ class BarChartViewController: UIViewController {
         barChartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0)
         barChartView.descriptionText = ""
         
-        var categories = ["Food and Drink", "Shop and Computers", "Transfer", "Others"]
+        var categories = ["Shop", "Food", "Transfer", "Others"]
         
         var piedataEntries: [ChartDataEntry] = []
         

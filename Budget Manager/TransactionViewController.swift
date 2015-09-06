@@ -11,6 +11,7 @@ import UIKit
 class TransactionViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     var selectedacct: Account!
+    var accesstoken: String!
     
     @IBOutlet weak var tableview: UITableView!
     @IBOutlet weak var account: UILabel!
@@ -24,7 +25,7 @@ class TransactionViewController: UIViewController, UITableViewDelegate, UITableV
         super.viewDidLoad()
         self.automaticallyAdjustsScrollViewInsets = false
         // Do any additional setup after loading the view.
-        TransactionClient.sharedInstance().gettransactionlist(self.selectedacct.accountID!, view: self.tableview)
+        TransactionClient.sharedInstance().gettransactionlist(self.selectedacct.accountID!, token: self.accesstoken, view: self.tableview)
         self.tableview.reloadData()
     }
 

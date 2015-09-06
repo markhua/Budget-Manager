@@ -19,15 +19,20 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var Saving: UILabel!
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         AccountClient.sharedInstance().accounts.removeAll(keepCapacity: true)
+        AccountClient.sharedInstance().totalexpense = 0
+        AccountClient.sharedInstance().totalincome = 0
+        AccountClient.sharedInstance().monthlyexpense = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        AccountClient.sharedInstance().expensebycat = [0, 0, 0, 0]
         let analyzebutton = UIBarButtonItem(title: "Analyze", style: UIBarButtonItemStyle.Plain, target: self, action: "Analyze:")
         self.navigationItem.rightBarButtonItem = analyzebutton
-        super.viewDidLoad()
+        
         self.automaticallyAdjustsScrollViewInsets = false
         // Do any additional setup after loading the view, typically from a nib.
         AccountClient.sharedInstance().getaccountlist(accesstoken, view: self.tableview)
-        AccountClient.sharedInstance().getalltransactions("2014", accesstoken: self.accesstoken)
-        
+        AccountClient.sharedInstance().getalltransactions("2014", accesstoken: self.accesstoken, label1: income, label2: Expense, label3: Saving)
+        self.tableview.reloadData()
     }
     
     @IBAction func Analyze(sender: UIBarButtonItem) {
@@ -47,9 +52,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         dispatch_async(dispatch_get_main_queue()){
             cell.textLabel?.text = account.name!
             cell.detailTextLabel?.text = "Card Type: \(account.type!), Number: xxxxx \(account.number!), \nCurrent Balance: \(account.balance!)"
-            self.income.text = "Total Income: \(AccountClient.sharedInstance().totalincome)"
-            self.Expense.text = "Total Expense: \(AccountClient.sharedInstance().totalexpense)"
-            self.Saving.text = "You've saved \(AccountClient.sharedInstance().totalincome-AccountClient.sharedInstance().totalexpense) in 2014"
         }
         return cell
     }
@@ -63,7 +65,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         TransactionClient.sharedInstance().transactions.removeAll(keepCapacity: true)
         let detailController = self.storyboard!.instantiateViewControllerWithIdentifier("TransactionViewController")! as! TransactionViewController
         detailController.selectedacct = AccountClient.sharedInstance().accounts[indexPath.row]
-        
+        detailController.accesstoken = self.accesstoken
         self.navigationController!.pushViewController(detailController, animated: true)
         
     }

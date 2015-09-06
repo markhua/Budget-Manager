@@ -71,10 +71,18 @@ class LoginViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         }
     }
     
-    func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+    /*func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         let titleData = pickerDataSource[row]
         var myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont(name: "Courier", size: 10.0)!, NSForegroundColorAttributeName:UIColor.whiteColor()])
         return myTitle
+    }*/
+    
+    func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView!) -> UIView {
+        let pickerLabel = UILabel()
+        let titleData = pickerDataSource[row]
+        let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont(name: "Courier", size: 14.0)!,NSForegroundColorAttributeName:UIColor.whiteColor()])
+        pickerLabel.attributedText = myTitle
+        return pickerLabel
     }
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
