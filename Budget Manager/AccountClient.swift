@@ -10,11 +10,11 @@ import Foundation
 import UIKit
 
 class AccountClient {
-    var accounts = [Account]()
-    var totalincome: Double = 0
-    var totalexpense: Double = 0
-    var monthlyexpense: [Double] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-    var expensebycat: [Double] = [0, 0, 0, 0]
+    var accounts = [Account]() // The array of accounts to be displayed
+    var totalincome: Double = 0  // Total income for certain bank
+    var totalexpense: Double = 0  // Total expense for certain bank
+    var monthlyexpense: [Double] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]  // Monthly expense
+    var expensebycat: [Double] = [0, 0, 0, 0] // The sum of expense in four categories
     
     class func sharedInstance() -> AccountClient {
         
@@ -28,6 +28,7 @@ class AccountClient {
 
 extension AccountClient {
     
+    // getaccountlist method will add accounts to the array based on the parsed result
     func getaccountlist(accesstoken: String, view: UITableView){
         let session = NSURLSession.sharedSession()
         let urlString = "https://tartan.plaid.com/connect?client_id=55ea43693b5cadf40371c50c&secret=095aa0bfc4ae585fb74b61ef6bc78c&access_token=\(accesstoken)"
@@ -71,6 +72,7 @@ extension AccountClient {
         task.resume()
     }
     
+    // User login helps user login with username and password
     func userlogin (username: String, password: String, type: String, completionHandler: (success: Bool, String: String?, question: String?) -> Void){
         let request = NSMutableURLRequest(URL: NSURL(string: "https://tartan.plaid.com/connect?client_id=55ea43693b5cadf40371c50c&secret=095aa0bfc4ae585fb74b61ef6bc78c&type=\(type)&username=\(username)&password=\(password)")!)
         request.HTTPMethod = "POST"
@@ -108,6 +110,7 @@ extension AccountClient {
         task.resume()
     }
     
+    // mfalogin is needed for some banks, a mfatext1 will be passed for validation
     func mfalogin(accesstoken: String, mfatext1: String, completionHandler: (success: Bool, mfa: Bool, String: String?)->Void){
         let request = NSMutableURLRequest(URL: NSURL(string:"https://tartan.plaid.com/auth/step?client_id=55ea43693b5cadf40371c50c&secret=095aa0bfc4ae585fb74b61ef6bc78c&mfa=\(mfatext1)&access_token=\(accesstoken)")!)
         request.HTTPMethod = "POST"
@@ -143,6 +146,7 @@ extension AccountClient {
         task.resume()
     }
     
+    // The the total transaction amount in certain years and update the labels
     func getalltransactions(year: String, accesstoken: String, label1: UILabel, label2: UILabel, label3: UILabel){
         
         let session = NSURLSession.sharedSession()

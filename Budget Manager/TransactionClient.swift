@@ -24,6 +24,7 @@ class TransactionClient {
 
 extension TransactionClient {
     
+    // gettransactionlist method gets transactions from API and displays the result in the tableview
     func gettransactionlist(acctid: String!, token: String!, view: UITableView){
         let session = NSURLSession.sharedSession()
         let urlString = "https://tartan.plaid.com/connect?client_id=55ea43693b5cadf40371c50c&secret=095aa0bfc4ae585fb74b61ef6bc78c&access_token=\(token)"

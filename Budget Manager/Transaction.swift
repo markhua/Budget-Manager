@@ -8,6 +8,7 @@
 
 import Foundation
 
+// Transaction is used to store data for parsed transaction results
 class Transaction {
     var accountid = ""
     var transacid = ""

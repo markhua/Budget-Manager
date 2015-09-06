@@ -43,7 +43,7 @@ class MfaViewController: UIViewController {
             }
         }
         
-        
+        // Different response from MFA will lead to different routes
         AccountClient.sharedInstance().mfalogin(accesstoken, mfatext1: mfatext1.text) {
             success, mfa, string in
             if (success){

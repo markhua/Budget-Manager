@@ -22,16 +22,20 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Reset the value of multiple AccountClient variables every time the view is loaded
         AccountClient.sharedInstance().accounts.removeAll(keepCapacity: true)
         AccountClient.sharedInstance().totalexpense = 0
         AccountClient.sharedInstance().totalincome = 0
         AccountClient.sharedInstance().monthlyexpense = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         AccountClient.sharedInstance().expensebycat = [0, 0, 0, 0]
+        
+        // The Analyze button on the top right helps
         let analyzebutton = UIBarButtonItem(title: "Analyze", style: UIBarButtonItemStyle.Plain, target: self, action: "Analyze:")
         self.navigationItem.rightBarButtonItem = analyzebutton
         
         self.automaticallyAdjustsScrollViewInsets = false
-        // Do any additional setup after loading the view, typically from a nib.
+
         AccountClient.sharedInstance().getaccountlist(accesstoken, view: self.tableview)
         AccountClient.sharedInstance().getalltransactions("2014", accesstoken: self.accesstoken, label1: income, label2: Expense, label3: Saving)
         
@@ -45,6 +49,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.tableview.reloadData()
     }
     
+    // The goal setting button sets the goal
     @IBAction func goalsetting(sender: UIButton) {
         if goalfield.text != nil {
             dispatch_async(dispatch_get_main_queue()){
@@ -54,12 +59,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
         }
     }
+    
+    // The analyze button will push to a the chart view controller
     @IBAction func Analyze(sender: UIBarButtonItem) {
 
         let detailController = self.storyboard!.instantiateViewControllerWithIdentifier("BarChartViewController")! as! BarChartViewController
         self.navigationController!.pushViewController(detailController, animated: true)
         
     }
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         /* Get cell type */

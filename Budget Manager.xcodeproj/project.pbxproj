@@ -128,16 +128,16 @@
 		BCC1741E1B9A86020061F2CA /* Budget Manager */ = {
 			isa = PBXGroup;
 			children = (
-				BCC174591B9B2A9A0061F2CA /* MfaViewController.swift */,
 				BCC174211B9A86020061F2CA /* AppDelegate.swift */,
-				BCC174231B9A86020061F2CA /* ViewController.swift */,
 				BCC174411B9AA7BF0061F2CA /* Account.swift */,
 				BCC174431B9AADDE0061F2CA /* AccountClient.swift */,
 				BCC174471B9AC1BA0061F2CA /* Transaction.swift */,
 				BCC174491B9AC4990061F2CA /* TransactionClient.swift */,
 				BCC174251B9A86020061F2CA /* Main.storyboard */,
+				BCC174231B9A86020061F2CA /* ViewController.swift */,
 				BCDF9DC01B9B8A640060BE26 /* BarChartViewController.swift */,
 				BCC1744B1B9B182D0061F2CA /* LoginViewController.swift */,
+				BCC174591B9B2A9A0061F2CA /* MfaViewController.swift */,
 				BCC174451B9AC1560061F2CA /* TransactionViewController.swift */,
 				BCC174281B9A86020061F2CA /* Images.xcassets */,
 				BCC1742A1B9A86020061F2CA /* LaunchScreen.xib */,

@@ -47,6 +47,7 @@ class LoginViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         
     }
 
+    // The login method will route user to the accounts page or MFA page based on the response
     @IBAction func login(sender: UIButton) {
         AccountClient.sharedInstance().userlogin(username.text, password: password.text, type: bank) { success, token, message in
             if (success) {
@@ -73,12 +74,7 @@ class LoginViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         }
     }
     
-    /*func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        let titleData = pickerDataSource[row]
-        var myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont(name: "Courier", size: 10.0)!, NSForegroundColorAttributeName:UIColor.whiteColor()])
-        return myTitle
-    }*/
-    
+    // method to customize pickerView style
     func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView!) -> UIView {
         let pickerLabel = UILabel()
         let titleData = pickerDataSource[row]

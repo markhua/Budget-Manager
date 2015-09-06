@@ -8,6 +8,8 @@
 
 import Foundation
 
+// The class Account is used to get the parsed data of user's bank accounts
+
 class Account: NSObject{
     
     var accountID : String?
