@@ -21,7 +21,7 @@
             </objects>
             <point key="canvasLocation" x="-847" y="162"/>
         </scene>
-        <!--Login View Controller-->
+        <!--BudgetBank-->
         <scene sceneID="QFa-Xt-4VX">
             <objects>
                 <viewController id="nl1-pI-dmX" customClass="LoginViewController" customModule="Budget_Manager" customModuleProvider="target" sceneMemberID="viewController">
@@ -61,7 +61,7 @@
                                 <rect key="frame" x="36" y="434" width="528" height="27"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="15"/>
-                                <state key="normal" title="Submit">
+                                <state key="normal" title="Login">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -124,7 +124,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="I9q-JR-dYN"/>
+                    <navigationItem key="navigationItem" title="BudgetBank" id="I9q-JR-dYN"/>
                     <connections>
                         <outlet property="password" destination="wTT-0Q-ZJ6" id="bpO-5L-l4f"/>
                         <outlet property="textpicker" destination="U41-cd-XM9" id="roH-m4-cTc"/>
@@ -306,7 +306,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="102" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ip5-A8-U7C">
-                                <rect key="frame" x="0.0" y="120" width="600" height="480"/>
+                                <rect key="frame" x="0.0" y="150" width="600" height="450"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AccountCell" textLabel="T8L-6h-NYX" detailTextLabel="I2A-n3-kb7" rowHeight="112" style="IBUITableViewCellStyleSubtitle" id="wjP-aE-MHM">
@@ -337,43 +337,120 @@
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Income" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nfe-CG-rEQ">
-                                <rect key="frame" x="37" y="35" width="55" height="15"/>
+                                <rect key="frame" x="26" y="35" width="55" height="15"/>
                                 <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="15"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Expense" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qjg-ZT-Jwz">
-                                <rect key="frame" x="37" y="58" width="64" height="15"/>
+                                <rect key="frame" x="26" y="58" width="64" height="15"/>
                                 <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="15"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Saving" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r1H-Xf-tsV">
-                                <rect key="frame" x="37" y="81" width="55" height="15"/>
+                                <rect key="frame" x="26" y="81" width="55" height="15"/>
                                 <fontDescription key="fontDescription" name="Courier-Bold" family="Courier" pointSize="15"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5RI-Lh-nmI">
+                                <rect key="frame" x="433" y="104" width="70" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="nB6-2P-Irr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oQC-gf-DM4">
+                                <rect key="frame" x="508" y="105" width="80" height="27"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="FD2-0C-asD"/>
+                                    <constraint firstAttribute="width" constant="80" id="f2i-Nz-VLQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Courier-Bold" family="Courier" pointSize="12"/>
+                                <state key="normal" title="Save">
+                                    <color key="titleColor" red="0.1529411765" green="0.31372549020000001" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="FD2-0C-asD"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="goalsetting:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="tAW-cI-Hp4"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My goal is to save $" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZX3-wk-jct">
+                                <rect key="frame" x="26" y="112" width="402" height="14"/>
+                                <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="14"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.15294117647058825" green="0.30980392156862746" blue="0.29019607843137257" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="ZX3-wk-jct" firstAttribute="top" secondItem="r1H-Xf-tsV" secondAttribute="bottom" constant="16" id="083-Wf-JTI"/>
+                            <constraint firstItem="oQC-gf-DM4" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="85" id="5JX-sT-CRC"/>
                             <constraint firstItem="qjg-ZT-Jwz" firstAttribute="top" secondItem="Nfe-CG-rEQ" secondAttribute="bottom" constant="8" id="5XT-Zw-GxZ"/>
-                            <constraint firstItem="r1H-Xf-tsV" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="21" id="AZa-H5-Q9j"/>
-                            <constraint firstItem="ip5-A8-U7C" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="100" id="EUH-oU-nJw"/>
-                            <constraint firstItem="qjg-ZT-Jwz" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="21" id="K2d-CO-eVA"/>
+                            <constraint firstItem="ip5-A8-U7C" firstAttribute="top" secondItem="oQC-gf-DM4" secondAttribute="bottom" constant="18" id="6ld-5d-AeN"/>
+                            <constraint firstItem="oQC-gf-DM4" firstAttribute="leading" secondItem="5RI-Lh-nmI" secondAttribute="trailing" constant="8" id="73t-7L-twm"/>
+                            <constraint firstItem="oQC-gf-DM4" firstAttribute="leading" secondItem="5RI-Lh-nmI" secondAttribute="trailing" constant="10" id="9to-hS-rqJ"/>
+                            <constraint firstItem="r1H-Xf-tsV" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="10" id="AZa-H5-Q9j"/>
+                            <constraint firstItem="ip5-A8-U7C" firstAttribute="top" secondItem="5RI-Lh-nmI" secondAttribute="bottom" constant="16" id="Bf9-Sj-iyv"/>
+                            <constraint firstItem="ip5-A8-U7C" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="130" id="EUH-oU-nJw"/>
+                            <constraint firstItem="oQC-gf-DM4" firstAttribute="leading" secondItem="5RI-Lh-nmI" secondAttribute="trailing" constant="10" id="FCg-4u-HUX"/>
+                            <constraint firstItem="ZX3-wk-jct" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="10" id="GMb-7C-bhR"/>
+                            <constraint firstItem="5RI-Lh-nmI" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="10" id="ISg-p0-tVf"/>
+                            <constraint firstItem="qjg-ZT-Jwz" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="10" id="K2d-CO-eVA"/>
+                            <constraint firstItem="ip5-A8-U7C" firstAttribute="top" secondItem="oQC-gf-DM4" secondAttribute="bottom" constant="19" id="OZb-Xl-4Bh"/>
+                            <constraint firstAttribute="centerX" secondItem="oQC-gf-DM4" secondAttribute="centerX" id="Rne-Na-DIu"/>
+                            <constraint firstItem="5RI-Lh-nmI" firstAttribute="top" secondItem="r1H-Xf-tsV" secondAttribute="bottom" constant="8" id="ZDH-SZ-MEd"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="ip5-A8-U7C" secondAttribute="bottom" id="ZhW-Hi-MVb"/>
-                            <constraint firstItem="Nfe-CG-rEQ" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="21" id="cEO-d9-b1W"/>
+                            <constraint firstItem="oQC-gf-DM4" firstAttribute="top" secondItem="r1H-Xf-tsV" secondAttribute="bottom" constant="8" id="bGH-ID-imq"/>
+                            <constraint firstItem="ip5-A8-U7C" firstAttribute="top" secondItem="5RI-Lh-nmI" secondAttribute="bottom" constant="16" id="bgr-zo-uZe"/>
+                            <constraint firstItem="Nfe-CG-rEQ" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="10" id="cEO-d9-b1W"/>
+                            <constraint firstItem="5RI-Lh-nmI" firstAttribute="leading" secondItem="ZX3-wk-jct" secondAttribute="trailing" constant="5" id="dt3-al-nMK"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="5RI-Lh-nmI" secondAttribute="trailing" constant="150" id="dyM-Cr-Ikr"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ip5-A8-U7C" secondAttribute="trailing" constant="-16" id="fRi-Tg-Nax"/>
+                            <constraint firstItem="oQC-gf-DM4" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="21" id="fWw-tq-pNT"/>
                             <constraint firstItem="Nfe-CG-rEQ" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="15" id="gmQ-yc-NdO"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="oQC-gf-DM4" secondAttribute="trailing" constant="10" id="hdz-3A-Q3s"/>
                             <constraint firstItem="r1H-Xf-tsV" firstAttribute="top" secondItem="qjg-ZT-Jwz" secondAttribute="bottom" constant="8" id="iKf-P8-cdM"/>
                             <constraint firstItem="ip5-A8-U7C" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="j9u-89-SyD"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="oQC-gf-DM4" secondAttribute="trailing" constant="-4" id="kBX-eh-NaY"/>
+                            <constraint firstItem="oQC-gf-DM4" firstAttribute="leading" secondItem="5RI-Lh-nmI" secondAttribute="trailing" constant="8" symbolic="YES" id="nY0-6f-cYB"/>
+                            <constraint firstItem="oQC-gf-DM4" firstAttribute="leading" secondItem="5RI-Lh-nmI" secondAttribute="trailing" constant="5" id="oka-uW-lub"/>
+                            <constraint firstItem="oQC-gf-DM4" firstAttribute="leading" secondItem="5RI-Lh-nmI" secondAttribute="trailing" constant="27" id="tcr-6w-Et5"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="OZb-Xl-4Bh"/>
+                                <exclude reference="bgr-zo-uZe"/>
+                                <exclude reference="ISg-p0-tVf"/>
+                                <exclude reference="ZDH-SZ-MEd"/>
+                                <exclude reference="dyM-Cr-Ikr"/>
+                                <exclude reference="73t-7L-twm"/>
+                                <exclude reference="9to-hS-rqJ"/>
+                                <exclude reference="FCg-4u-HUX"/>
+                                <exclude reference="Rne-Na-DIu"/>
+                                <exclude reference="bGH-ID-imq"/>
+                                <exclude reference="fWw-tq-pNT"/>
+                                <exclude reference="hdz-3A-Q3s"/>
+                                <exclude reference="nY0-6f-cYB"/>
+                                <exclude reference="tcr-6w-Et5"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="Qur-Fg-inm"/>
                     <connections>
                         <outlet property="Expense" destination="qjg-ZT-Jwz" id="QVk-49-VoF"/>
                         <outlet property="Saving" destination="r1H-Xf-tsV" id="C4r-Vu-21G"/>
+                        <outlet property="goalfield" destination="5RI-Lh-nmI" id="vOk-0I-gF5"/>
                         <outlet property="income" destination="Nfe-CG-rEQ" id="5rR-aI-vOr"/>
+                        <outlet property="setgoalbutton" destination="oQC-gf-DM4" id="vyV-51-bQz"/>
                         <outlet property="tableview" destination="ip5-A8-U7C" id="Ppf-a1-SSP"/>
                     </connections>
                 </viewController>

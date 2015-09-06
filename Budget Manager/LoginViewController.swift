@@ -66,6 +66,8 @@ class LoginViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
                     }
                     
                 }
+            } else {
+                self.notificationmsg(token!)
             }
             
         }
@@ -149,5 +151,15 @@ extension LoginViewController {
         let userInfo = notification.userInfo
         let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue // of CGRect
         return keyboardSize.CGRectValue().height
+    }
+    
+    //Display notification with message string
+    func notificationmsg (msgstring: String)
+    {
+        dispatch_async(dispatch_get_main_queue()){
+            let controller = UIAlertController(title: "Notification", message: msgstring, preferredStyle: .Alert)
+            controller.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+            self.presentViewController(controller, animated: true, completion: nil)
+        }
     }
 }

@@ -30,6 +30,20 @@ class MfaViewController: UIViewController {
     }
     
     @IBAction func loginMFA(sender: UIButton) {
+        
+        if(mfatext1.text == ""){
+            self.notificationmsg("Please fill the blank")
+            return
+        }
+        
+        for index in indices(mfatext1.text) {
+            if mfatext1.text[index] == " " {
+                self.notificationmsg("No space allowed")
+                return
+            }
+        }
+        
+        
         AccountClient.sharedInstance().mfalogin(accesstoken, mfatext1: mfatext1.text) {
             success, mfa, string in
             if (success){
@@ -52,6 +66,15 @@ class MfaViewController: UIViewController {
         }
     }
     
+    //Display notification with message string
+    func notificationmsg (msgstring: String)
+    {
+        dispatch_async(dispatch_get_main_queue()){
+            let controller = UIAlertController(title: "Notification", message: msgstring, preferredStyle: .Alert)
+            controller.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+            self.presentViewController(controller, animated: true, completion: nil)
+        }
+    }
     
 }
 

@@ -17,6 +17,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var income: UILabel!
     @IBOutlet weak var Expense: UILabel!
     @IBOutlet weak var Saving: UILabel!
+    @IBOutlet weak var goalfield: UITextField!
+    @IBOutlet weak var setgoalbutton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,9 +34,26 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // Do any additional setup after loading the view, typically from a nib.
         AccountClient.sharedInstance().getaccountlist(accesstoken, view: self.tableview)
         AccountClient.sharedInstance().getalltransactions("2014", accesstoken: self.accesstoken, label1: income, label2: Expense, label3: Saving)
+        
+        var goal = NSUserDefaults.standardUserDefaults().valueForKey("Goal") as? String
+        dispatch_async(dispatch_get_main_queue()){
+            if (goal != nil) {
+                self.goalfield.text = goal
+            }
+        }
+        
         self.tableview.reloadData()
     }
     
+    @IBAction func goalsetting(sender: UIButton) {
+        if goalfield.text != nil {
+            dispatch_async(dispatch_get_main_queue()){
+                NSUserDefaults.standardUserDefaults().setValue(self.goalfield.text, forKey: "Goal")
+                self.setgoalbutton.titleLabel?.text = "Change"
+                self.notificationmsg("Goal Saved!")
+            }
+        }
+    }
     @IBAction func Analyze(sender: UIBarButtonItem) {
 
         let detailController = self.storyboard!.instantiateViewControllerWithIdentifier("BarChartViewController")! as! BarChartViewController
@@ -70,6 +89,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
     }
 
+    //Display notification with message string
+    func notificationmsg (msgstring: String)
+    {
+        dispatch_async(dispatch_get_main_queue()){
+            let controller = UIAlertController(title: "Notification", message: msgstring, preferredStyle: .Alert)
+            controller.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+            self.presentViewController(controller, animated: true, completion: nil)
+        }
+    }
 
 }
 

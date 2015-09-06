@@ -4,7 +4,9 @@
 //
 //  Created by Mark Zhang on 9/5/15.
 //  Copyright (c) 2015 Mark Zhang. All rights reserved.
-//
+
+
+// This class uses ios-charts library developed by Daniel Cohen Gindi
 
 import UIKit
 import Charts

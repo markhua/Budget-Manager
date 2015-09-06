@@ -72,7 +72,7 @@ extension AccountClient {
     }
     
     func userlogin (username: String, password: String, type: String, completionHandler: (success: Bool, String: String?, question: String?) -> Void){
-        let request = NSMutableURLRequest(URL: NSURL(string: "https://tartan.plaid.com/connect?client_id=55ea43693b5cadf40371c50c&secret=095aa0bfc4ae585fb74b61ef6bc78c&type=\(type)&username=plaid_test&password=plaid_good")!)
+        let request = NSMutableURLRequest(URL: NSURL(string: "https://tartan.plaid.com/connect?client_id=55ea43693b5cadf40371c50c&secret=095aa0bfc4ae585fb74b61ef6bc78c&type=\(type)&username=\(username)&password=\(password)")!)
         request.HTTPMethod = "POST"
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithRequest(request) { data, response, error in
@@ -85,7 +85,6 @@ extension AccountClient {
             if let error = parsingError {
                 completionHandler(success: false, String: "Post error", question: nil)
             }else{
-                println(parsedResult)
                 if let accesstoken = parsedResult["access_token"] as? String{
                     if let mfa = parsedResult["mfa"] as? [[String: AnyObject]]{
                         if let mfamessage = mfa[0]["question"] as? String {
@@ -126,7 +125,6 @@ extension AccountClient {
                 }else{
  
                     if let message = parsedResult["message"] as? String{
-                        println(message)
                         completionHandler(success: false, mfa: false, String: message)
                     }else{
                         if let mfa = parsedResult["mfa"] as? [[String: AnyObject]]{
@@ -223,6 +221,7 @@ extension AccountClient {
         task.resume()
         
     }
+    
     
 }
 
